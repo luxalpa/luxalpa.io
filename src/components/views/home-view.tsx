@@ -33,7 +33,7 @@ const styles = stylesheet({
     font: '12pt "Roboto Slab"',
   },
   page: {
-    margin: "70px 15px 15px",
+    margin: "35px 15px 15px",
   },
   heading: {
     width: "600px",
