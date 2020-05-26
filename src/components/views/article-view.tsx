@@ -11,13 +11,13 @@ import { Theme } from "@/theme";
 const styles = stylesheet({
   page: {
     margin: "35px 15px 15px",
-    width: "100%",
     display: "flex",
     justifyContent: "center",
   },
   content: {
-    width: "500px",
+    width: "600px",
     font: "12pt Roboto Slab",
+    lineHeight: "1.8",
   },
   heading: {
     font: "bold 20pt Roboto Slab",
@@ -27,25 +27,31 @@ const styles = stylesheet({
     font: "12pt Roboto Slab",
     color: "#666",
   },
+  topnavbtn: {
+    padding: "15px",
+    textDecoration: "none",
+    color: "black",
+    $nest: {
+      "&:hover": {
+        backgroundColor: Theme.hoverColor,
+      },
+    },
+  },
+  disabled: {
+    cursor: "default",
+    color: "#888",
+    $nest: {
+      "&:hover": {
+        backgroundColor: "unset",
+      },
+    },
+  },
   topNav: {
     display: "flex",
-    width: "100%",
     justifyContent: "space-between",
     marginBottom: "35px",
     marginLeft: "-15px",
     marginRight: "-15px",
-    $nest: {
-      "& > a": {
-        padding: "15px",
-        textDecoration: "none",
-        color: "black",
-        $nest: {
-          "&:hover": {
-            backgroundColor: Theme.hoverColor,
-          },
-        },
-      },
-    },
   },
 });
 
@@ -68,11 +74,21 @@ export class ArticleView extends Vue {
           <div class={styles.topNav}>
             <router-link
               to={oldProject != NoProject ? "/projects/" + oldProject.slug : ""}
+              class={[
+                oldProject == NoProject && styles.disabled,
+                styles.topnavbtn,
+              ]}
             >
               Older Story
             </router-link>
-            <router-link to={"/"}>All Stories</router-link>
+            <router-link class={styles.topnavbtn} to={"/"}>
+              All Stories
+            </router-link>
             <router-link
+              class={[
+                newProject == NoProject && styles.disabled,
+                styles.topnavbtn,
+              ]}
               to={newProject != NoProject ? "/projects/" + newProject.slug : ""}
             >
               Newer Story

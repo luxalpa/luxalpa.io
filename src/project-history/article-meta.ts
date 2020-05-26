@@ -1,4 +1,3 @@
-import { Vue } from "vue-property-decorator";
 import { AsyncComponent } from "vue";
 
 export interface Project {
@@ -7,13 +6,15 @@ export interface Project {
   abstract: string;
   date: string;
   importfn: AsyncComponent;
+  state: string;
 }
 
 export const NoProject: Project = {
-  name: "",
-  slug: "",
-  abstract: "",
-  date: "",
+  name: "invalid",
+  slug: "invalid",
+  abstract: "invalid",
+  date: "invalid",
+  state: "invalid",
   importfn: () => {},
 };
 
@@ -23,17 +24,20 @@ export function sortProjectsByDate(a: Project, b: Project) {
 
 export const Projects: Project[] = [
   {
-    name: "Test Project",
-    slug: "test",
-    abstract: "This was a test project",
-    date: "2007",
-    importfn: () => import("@/project-history/test"),
+    name: "Dynamaxed",
+    slug: "dynamaxed",
+    abstract:
+      "A project to simplify modding of the Pokemon Series games by providing a graphical editor and abstraction for the Pokemon Reverse Engineering Toolkit (PRET)",
+    date: "2019",
+    state: "In Progress",
+    importfn: () => import("@/project-history/dynamaxed"),
   },
   {
     name: "Other Test Project",
     slug: "test2",
     abstract: "Another test project was created in 2009",
     date: "2009",
+    state: "In Progress",
     importfn: () => import("@/project-history/test2"),
   },
 ];
