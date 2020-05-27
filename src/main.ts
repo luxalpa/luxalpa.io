@@ -1,3 +1,5 @@
+import "./class-component-hooks"; // this must be the first import!
+
 import Vue from "vue";
 import { App } from "@/app";
 import router from "@/router";
