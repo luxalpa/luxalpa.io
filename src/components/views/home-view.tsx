@@ -1,5 +1,5 @@
 import { Component, Vue } from "vue-property-decorator";
-import { Projects, sortProjectsByDate } from "@/project-history/article-meta";
+import { Projects, sortProjectsByDate } from "@/project-meta";
 import { stylesheet } from "typestyle";
 import { Theme } from "@/theme";
 

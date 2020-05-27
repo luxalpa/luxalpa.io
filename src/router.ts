@@ -1,16 +1,16 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import { HomeView } from "@/components/views/home-view";
-import { Projects } from "@/project-history/article-meta";
+import { Projects } from "@/project-meta";
 import { ArticleView } from "@/components/views/article-view";
 
 Vue.use(VueRouter);
 
 function getProjectHistoryRoutes(): RouteConfig[] {
   return Projects.map((project) => ({
-    path: project.slug,
+    path: `/projects/${project.slug}`,
     name: `Project-${project.slug}`,
-    component: project.importfn,
+    component: ArticleView,
     meta: {
       project,
     },
@@ -24,9 +24,9 @@ const routes: Array<RouteConfig> = [
     component: HomeView,
   },
   {
-    path: "/projects",
+    path: "/projects/:slug",
+    name: "Project",
     component: ArticleView,
-    children: getProjectHistoryRoutes(),
   },
 ];
 
@@ -34,6 +34,9 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    return savedPosition || { x: 0, y: 0 };
+  },
 });
 
 export default router;
