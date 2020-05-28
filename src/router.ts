@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from "vue-router";
 import { HomeView } from "@/components/views/home-view";
 import { Projects } from "@/project-meta";
 import { ArticleView } from "@/components/views/article-view";
+import { ProjectOverview } from "@/components/views/project-overview";
 
 Vue.use(VueRouter);
 
@@ -20,12 +21,17 @@ function getProjectHistoryRoutes(): RouteConfig[] {
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: HomeView,
   },
   {
+    path: "/projects",
+    name: "project-overview",
+    component: ProjectOverview,
+  },
+  {
     path: "/projects/:slug",
-    name: "Project",
+    name: "project",
     component: ArticleView,
   },
 ];

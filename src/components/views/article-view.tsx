@@ -9,6 +9,7 @@ import {
 import { Theme } from "@/theme";
 import { NavigationGuard, NavigationGuardNext, Route } from "vue-router";
 import { ProjectManager } from "@/project-manager";
+import { Markdown } from "@/components/markdown";
 
 const styles = stylesheet({
   page: {
@@ -19,8 +20,7 @@ const styles = stylesheet({
   },
   content: {
     width: "600px",
-    font: "12pt Roboto Slab",
-    lineHeight: "1.8",
+    font: "12pt/1.8 Roboto Slab",
     $nest: {
       h1: {
         font: "bold 20pt Fira Sans",
@@ -120,7 +120,11 @@ export class ArticleView extends Vue {
           </div>
           <span class={styles.date}>{project.date}</span>
           <h1 class={styles.heading}>{project.name}</h1>
-          <div domPropsInnerHTML={this.content} class={styles.content} />
+          <Markdown
+            class={styles.content}
+            src={`/project-history/${this.$route.params.slug}.md`}
+          />
+          {/*<div domPropsInnerHTML={this.content} class={styles.content} />*/}
           <div class={styles.botNav}>
             <Navbar project-slug={this.$route.params.slug} />
           </div>
@@ -155,7 +159,7 @@ class Navbar extends Vue {
         >
           Older project
         </router-link>
-        <router-link class={styles.topnavbtn} to={"/"}>
+        <router-link class={styles.topnavbtn} to={{ name: "project-overview" }}>
           All projects
         </router-link>
         <router-link
