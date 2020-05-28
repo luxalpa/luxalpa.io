@@ -19,7 +19,6 @@ export const ProjectManager = Vue.observable(
           smartypants: true,
         })
       );
-      console.log(this.resolvedMarkdown[project]);
     }
   })()
 );

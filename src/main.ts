@@ -12,8 +12,7 @@ import { cssRule } from "typestyle";
 Vue.config.productionTip = false;
 
 cssRule("body", {
-  lineHeight: "1.6",
-  font: "",
+  font: "12pt/1.8 Roboto Slab",
 });
 
 new Vue({
