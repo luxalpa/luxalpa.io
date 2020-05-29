@@ -27,10 +27,6 @@ const styles = stylesheet({
   },
 });
 
-interface Props {
-  content: string;
-}
-
 const NoAsyncContent = "";
 
 @Component({
@@ -52,7 +48,7 @@ export class Markdown extends Vue {
     this.asyncContent = "Loading ...";
 
     const response = await fetch(this.src);
-    // this.asyncContent = await response.text();
+    this.asyncContent = await response.text();
   }
 
   get resolvedContent() {
