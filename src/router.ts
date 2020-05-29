@@ -4,6 +4,7 @@ import { HomeView } from "@/components/views/home-view";
 import { Projects } from "@/project-meta";
 import { ArticleView } from "@/components/views/article-view";
 import { ProjectOverview } from "@/components/views/project-overview";
+import { ProgrammingSummary } from "@/components/views/programming-summary";
 
 Vue.use(VueRouter);
 
@@ -22,12 +23,17 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    redirect: "/projects",
   },
   {
     path: "/projects",
     name: "project-overview",
     component: ProjectOverview,
+  },
+  {
+    path: "/programming-summary",
+    name: "programming-summary",
+    component: ProgrammingSummary,
   },
   {
     path: "/projects/:slug",

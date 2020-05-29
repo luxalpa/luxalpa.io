@@ -36,7 +36,6 @@ const styles = stylesheet({
   heading: {
     font: "bold 20pt Roboto Slab",
     marginTop: "7px",
-    marginBottom: "0px",
   },
   date: {
     font: "12pt Roboto Slab",
@@ -69,36 +68,24 @@ const styles = stylesheet({
     marginTop: "35px",
   },
   navbar: {
-    justifyContent: "space-between",
+    justifyContent: "center",
     display: "flex",
   },
 });
 
 @Component({
-  name: "ArticleView",
+  name: "ProgrammingSummary",
 })
-export class ArticleView extends Vue {
+export class ProgrammingSummary extends Vue {
   render() {
-    const projectList = [...Projects].sort(sortProjectsByDate);
-
-    const projectIdx = projectList.findIndex(
-      (value) => value.slug == this.$route.params.slug
-    );
-
-    const project = projectList[projectIdx];
-
     return (
       <div class={styles.page}>
         <div>
           <div class={styles.topNav}>
             <Navbar project-slug={this.$route.params.slug} />
           </div>
-          <h1 class={styles.heading}>{project.name}</h1>
-          <span class={styles.date}>{project.date}</span>
-          <Markdown
-            class={styles.content}
-            src={`/project-history/${this.$route.params.slug}.md`}
-          />
+          <h1 class={styles.heading}>My history as a programmer</h1>
+          <Markdown class={styles.content} src={`/programming-summary.md`} />
           <div class={styles.botNav}>
             <Navbar project-slug={this.$route.params.slug} />
           </div>
@@ -113,34 +100,10 @@ class Navbar extends Vue {
   @Prop() projectSlug!: string;
 
   render() {
-    const projectList = [...Projects].sort(sortProjectsByDate);
-
-    const projectIdx = projectList.findIndex(
-      (value) => value.slug == this.projectSlug
-    );
-
-    const oldProject = projectList[projectIdx - 1] || NoProject;
-    const newProject = projectList[projectIdx + 1] || NoProject;
-
     return (
       <div class={styles.navbar}>
-        <router-link
-          to={oldProject != NoProject ? "/projects/" + oldProject.slug : ""}
-          class={classes(
-            oldProject == NoProject && styles.disabled,
-            styles.topnavbtn
-          )}
-        >
-          Older project
-        </router-link>
         <router-link class={styles.topnavbtn} to={{ name: "project-overview" }}>
           All projects
-        </router-link>
-        <router-link
-          class={[newProject == NoProject && styles.disabled, styles.topnavbtn]}
-          to={newProject != NoProject ? "/projects/" + newProject.slug : ""}
-        >
-          Newer project
         </router-link>
       </div>
     );

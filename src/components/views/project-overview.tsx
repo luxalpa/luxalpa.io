@@ -58,9 +58,8 @@ export class ProjectOverview extends Vue {
         <h1 class={styles.heading}>Projects</h1>
         <div class={styles.topText}>
           <Markdown>
-            I have been programming since 2003. This list is an incomplete
-            collection of recent programming projects that I did. For a summary
-            of my programming history [click here.](/projects/outworldzilla)
+            I have been programming since 2003. The following is an incomplete
+            collection of my recent projects.
           </Markdown>
         </div>
         {projects.reverse().map((project) => (
