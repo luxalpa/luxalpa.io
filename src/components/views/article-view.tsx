@@ -1,5 +1,5 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { classes, stylesheet } from "typestyle";
+import { classes, media, stylesheet } from "typestyle";
 import { NoProject, Projects, sortProjectsByDate } from "@/project-meta";
 import { Theme } from "@/theme";
 import { Markdown } from "@/components/markdown";
@@ -10,9 +10,16 @@ const styles = stylesheet({
     display: "flex",
     justifyContent: "center",
     width: "600px",
+    ...media(
+      { minWidth: 0, maxWidth: 685 },
+      {
+        width: "100%",
+        padding: "0 35px",
+        boxSizing: "border-box",
+      }
+    ),
   },
   content: {
-    width: "600px",
     font: "12pt/1.8 Roboto Slab",
     $nest: {
       h1: {
@@ -69,7 +76,7 @@ const styles = stylesheet({
     marginTop: "35px",
   },
   navbar: {
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     display: "flex",
   },
 });
@@ -78,6 +85,25 @@ const styles = stylesheet({
   name: "ArticleView",
 })
 export class ArticleView extends Vue {
+  smallVersion: boolean = false;
+
+  mounted() {
+    window.addEventListener("resize", this.windowResize);
+    this.windowResize();
+  }
+
+  windowResize() {
+    if (window.innerWidth < 470) {
+      this.smallVersion = true;
+    } else {
+      this.smallVersion = false;
+    }
+  }
+
+  destroyed() {
+    window.removeEventListener("resize", this.windowResize);
+  }
+
   render() {
     const projectList = [...Projects].sort(sortProjectsByDate);
 
@@ -91,7 +117,10 @@ export class ArticleView extends Vue {
       <div class={styles.page}>
         <div>
           <div class={styles.topNav}>
-            <Navbar project-slug={this.$route.params.slug} />
+            <Navbar
+              project-slug={this.$route.params.slug}
+              tiny={this.smallVersion}
+            />
           </div>
           <h1 class={styles.heading}>{project.name}</h1>
           <span class={styles.date}>{project.date}</span>
@@ -100,7 +129,10 @@ export class ArticleView extends Vue {
             src={`/project-history/${this.$route.params.slug}.md`}
           />
           <div class={styles.botNav}>
-            <Navbar project-slug={this.$route.params.slug} />
+            <Navbar
+              project-slug={this.$route.params.slug}
+              tiny={this.smallVersion}
+            />
           </div>
         </div>
       </div>
@@ -111,6 +143,7 @@ export class ArticleView extends Vue {
 @Component
 class Navbar extends Vue {
   @Prop() projectSlug!: string;
+  @Prop() tiny!: boolean;
 
   render() {
     const projectList = [...Projects].sort(sortProjectsByDate);
@@ -131,7 +164,11 @@ class Navbar extends Vue {
             styles.topnavbtn
           )}
         >
-          Older project
+          {this.tiny ? (
+            <font-awesome-icon icon="chevron-left" />
+          ) : (
+            "Older Project"
+          )}
         </router-link>
         <router-link class={styles.topnavbtn} to={{ name: "project-overview" }}>
           All projects
@@ -140,7 +177,11 @@ class Navbar extends Vue {
           class={[newProject == NoProject && styles.disabled, styles.topnavbtn]}
           to={newProject != NoProject ? "/projects/" + newProject.slug : ""}
         >
-          Newer project
+          {this.tiny ? (
+            <font-awesome-icon icon="chevron-right" />
+          ) : (
+            "Newer Project"
+          )}
         </router-link>
       </div>
     );
