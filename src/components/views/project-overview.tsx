@@ -21,6 +21,7 @@ const styles = stylesheet({
   date: {
     color: "#5e5e5e",
     fontWeight: "normal",
+    paddingLeft: "10px",
   },
   subheading: {
     marginBottom: "10px",
@@ -70,7 +71,7 @@ export class ProjectOverview extends Vue {
         <div class={styles.topText}>
           <Markdown>
             I have been programming since 2003. The following is an incomplete
-            collection of my recent projects. Click on a project for more
+            selection of my recent projects. Click on a project for more
             information.
           </Markdown>
         </div>
