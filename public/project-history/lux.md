@@ -1,5 +1,5 @@
 The source code for this project can be found on Github at  
-https://github.com/tyranteon/lux-ts
+https://github.com/luxalpa/lux-ts
 
 ## Motivation
 

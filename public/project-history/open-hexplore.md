@@ -1,5 +1,5 @@
 This project can be found on github at  
-https://github.com/tyranteon/openhexplore/
+https://github.com/luxalpa/openhexplore/
 
 ## Motivation
 

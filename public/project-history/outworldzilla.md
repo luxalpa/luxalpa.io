@@ -1,7 +1,7 @@
 The source code for this project can be found at Github:  
-https://github.com/tyranteon/outworldzilla
+https://github.com/luxalpa/outworldzilla
 
-[Click here for a live version.](http://outworldzilla.tyranteon.com)
+[Click here for a live version.](http://outworldzilla.luxalpa.io)
 
 ## Motivation
 
@@ -31,7 +31,7 @@ And I've used it everywhere. It actually made many of the tasks so much nicer to
 
 Only when I tried to build my own UI framework in 2020 I actually fully understood the genius of RxJs and the idea behind the Observable pattern. But that's a different story.
 
-Anyway, probably the biggest pain point (aside from the CSS) was getting the SVG graphics for the user score graph right (the application tracks your scores for every minigame and displays them in a graph for watching your progress). I had to make sure the lowest and highest points of the graph were always sensible (i.e. visible), so the axes needed to be in the right positions. Also, I didn't want to have any weird numbers on the axes either, so [getting that right was quite a lot of work](https://github.com/tyranteon/outworldzilla/blob/4e833678a7c0df98dc3386f4c59de2686478a65d/script/graph.component.ts#L101). And I feel like it's still not working perfectly some of the time.
+Anyway, probably the biggest pain point (aside from the CSS) was getting the SVG graphics for the user score graph right (the application tracks your scores for every minigame and displays them in a graph for watching your progress). I had to make sure the lowest and highest points of the graph were always sensible (i.e. visible), so the axes needed to be in the right positions. Also, I didn't want to have any weird numbers on the axes either, so [getting that right was quite a lot of work](https://github.com/luxalpa/outworldzilla/blob/4e833678a7c0df98dc3386f4c59de2686478a65d/script/graph.component.ts#L101). And I feel like it's still not working perfectly some of the time.
 
 Another huge challenge was the CSS. First there was the thing with the animations. I wanted forward and backward animations for the separate tabs, and I also needed the height of the tab to animate with it. I would kind of have an idea how to do that in Vue.js now (in fact the former would be quite easy), but back then in Angular this was a nigh impossibility and required a lot of global tinkering.
 

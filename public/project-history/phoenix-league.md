@@ -1,5 +1,5 @@
 This project can be found on github at  
-https://github.com/tyranteon/phoenix-league
+https://github.com/luxalpa/phoenix-league
 
 ## Motivation
 
@@ -13,7 +13,7 @@ A difficult decision was how to actually create a working matchmaking system. I 
 
 One of the main hurdles was actually the very first step: When a player went to the website, he was supposed to login with his Steam Account in order to join the matchmaking. This required me to store user data (the user session) on the server (I used Postgres and Flyway for that) and it required an implementation of WebSockets and OpenID Connect on the server.
 
-At the time I had no idea about OpenIDConnect (and OAuth) and had to look it up. About 4 hours of different Internet videos later, I finally understood how it works and was able to script together a [solution](https://github.com/tyranteon/phoenix-league/blob/067796924292f83bd3af98a88814431683998d06/server/src/webapi.ts) using Passport.js. This really took multiple days of pretty much fultime work and was a huge effort. 
+At the time I had no idea about OpenIDConnect (and OAuth) and had to look it up. About 4 hours of different Internet videos later, I finally understood how it works and was able to script together a [solution](https://github.com/luxalpa/phoenix-league/blob/067796924292f83bd3af98a88814431683998d06/server/src/webapi.ts) using Passport.js. This really took multiple days of pretty much fultime work and was a huge effort. 
 
 ## Future
 

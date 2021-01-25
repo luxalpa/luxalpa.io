@@ -1,4 +1,4 @@
-# tyranteon.com
+# luxalpa.io
 
 ## Project setup
 ```

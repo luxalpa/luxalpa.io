@@ -1,7 +1,7 @@
 The source code for this project can be found on Github:  
-https://github.com/tyranteon/proportion-practice/
+https://github.com/luxalpa/proportion-practice/
 
-[Click here for a live version.](http://art-trainer.tyranteon.com) 
+[Click here for a live version.](http://art-trainer.luxalpa.io) 
 
 ## Motivation
 

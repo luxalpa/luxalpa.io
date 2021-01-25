@@ -1,5 +1,5 @@
 This project can be found on github at  
-https://github.com/tyranteon/dynamaxed-translator
+https://github.com/luxalpa/dynamaxed-translator
 
 For more information about Dynamaxed, read [the Dynamaxed project page](/projects/dynamaxed) first
 
@@ -11,7 +11,7 @@ My brother wanted to edit Pokemon Emerald, but the [PRET/pokeemerald](https://gi
 
 The project was a one day side-project that I quickly scripted together in TypeScript. As input the command line utility uses a German pokeemerald ROM and the folder to the dynamaxed .json files, and it modifies those files (so any other changes to the stats etc will not be overridden).
 
-The most tricky part of the project was the [readPokeString](https://github.com/tyranteon/dynamaxed-translator/blob/ce41f24347f2fbef033f241ec4bf128dff8b0069/src/util.ts#L8) function which translates the games custom character encoding into Unicode. The pokeemerald project uses a custom syntax for characters that are not expressed as unicode (like the PKMN character sequence and various icons) and the game uses a custom encoding for some of these characters as well (storing them as multiple bytes instead of just one).
+The most tricky part of the project was the [readPokeString](https://github.com/luxalpa/dynamaxed-translator/blob/ce41f24347f2fbef033f241ec4bf128dff8b0069/src/util.ts#L8) function which translates the games custom character encoding into Unicode. The pokeemerald project uses a custom syntax for characters that are not expressed as unicode (like the PKMN character sequence and various icons) and the game uses a custom encoding for some of these characters as well (storing them as multiple bytes instead of just one).
 
 My solution isn't perfect but it worked for this usecase. It did however require a bit of trial and error and isn't a general solution for all other language translations.
 

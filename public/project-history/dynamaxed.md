@@ -1,6 +1,6 @@
 This project can be found on github at  
-https://github.com/tyranteon/dynamaxed/  
-https://github.com/tyranteon/dynamaxed-emerald/
+https://github.com/luxalpa/dynamaxed/  
+https://github.com/luxalpa/dynamaxed-emerald/
 
 ## Motivation
 
@@ -22,7 +22,7 @@ I decided to drop the original idea of doing it in C# and instead went for my us
 
 ### Serialization
 
-I quickly realized that in order for this project to work, I needed a .json file with all the information of all the trainers in it, and then a generator which would create the .c and .h files from it. Creating that was actually a joy to do. IntelliJ's Search and Replace functionality that allows you to use complex Regular Expressions made it a fun exercise to transform the original data into JSON, and I created a [tool set](https://github.com/tyranteon/dynamaxed/blob/70272b6f600aad9c2d3b01f12855902e6d68f715/src/model/serialize/common.ts) to automatically transform that JSON back into C Header files.
+I quickly realized that in order for this project to work, I needed a .json file with all the information of all the trainers in it, and then a generator which would create the .c and .h files from it. Creating that was actually a joy to do. IntelliJ's Search and Replace functionality that allows you to use complex Regular Expressions made it a fun exercise to transform the original data into JSON, and I created a [tool set](https://github.com/luxalpa/dynamaxed/blob/70272b6f600aad9c2d3b01f12855902e6d68f715/src/model/serialize/common.ts) to automatically transform that JSON back into C Header files.
 
 For this to work in production without a myriad of merge conflicts however, I had to fork and modify the [pokeemerald](https://github.com/pret/pokeemerald) project. This has the side effect that there will now be stable versioning for Dynamaxed. 
 
@@ -38,7 +38,7 @@ Initially I tried using CSS (with SASS) but I had some issues with regards to th
 
 Another difficult bit was the User Experience. The traditional editors had so many windows, and I wanted to use a design without requiring windows (mostly because implementing those in Electron is generally a really bad idea). While my UI design mostly resembles Visual Studio Code, I tried windows, tabs and panes (like in Unity or IntelliJ), but they all didn't work too well. In the end I came up with a custom solution that I am very happy with. When the user wants to edit a trainer, then usually one of the next steps would be to edit the pokemon, or the map, or anything that was somehow related to the trainer. The idea was to move all the info that is related onto the same page and provide navigation primarily using short cuts to those places (so for example, when you want to edit the position on the map for that trainer you could just middle click on the map preview and if you wanted to edit the trainer class you could just middle click on that). The middle click navigation in addition to back and forward buttons turned out to be a really nice design and I'm still very proud of it.
 
-For this design, I needed a View Manager. I would leave away most dialog windows, except for when directly editing a value (say a text or a number, or selecting a picture or an element from a list). With a lot of TypeScript magic I was able to implement a [View and Dialog system](https://github.com/tyranteon/dynamaxed/blob/70272b6f600aad9c2d3b01f12855902e6d68f715/src/modules/view-manager.ts) which would allow me to send parameters and return values from the Views / Dialogs that are actually being typechecked.
+For this design, I needed a View Manager. I would leave away most dialog windows, except for when directly editing a value (say a text or a number, or selecting a picture or an element from a list). With a lot of TypeScript magic I was able to implement a [View and Dialog system](https://github.com/luxalpa/dynamaxed/blob/70272b6f600aad9c2d3b01f12855902e6d68f715/src/modules/view-manager.ts) which would allow me to send parameters and return values from the Views / Dialogs that are actually being typechecked.
 
 ## The Future
 
